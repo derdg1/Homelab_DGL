@@ -1,0 +1,23 @@
+version: '3'
+services:
+  ntfy:
+    image: binwiederhier/ntfy
+    restart: unless-stopped
+    environment:
+      NTFY_BASE_URL: 
+      NTFY_CACHE_FILE: /data/cache.db
+      NTFY_AUTH_FILE: /data/auth.db
+      NTFY_AUTH_DEFAULT_ACCESS: deny-all
+      NTFY_BEHIND_PROXY: true
+      NTFY_ATTACHMENT_CACHE_DIR: /data/attachments
+      NTFY_ENABLE_LOGIN: true
+    volumes:
+      - ntfy_data:/data
+      - /etc/ntfy/server.yml:/etc/ntfy/server.yml:ro  # Bindet die existierende server.yml ein
+    ports:
+      - 8123:80
+    command: serve
+
+volumes:
+  ntfy_data:
+    external: false
