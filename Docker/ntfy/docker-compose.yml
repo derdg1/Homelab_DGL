@@ -15,7 +15,7 @@ services:
       - ntfy_data:/data
       - /etc/ntfy/server.yml:/etc/ntfy/server.yml:ro  # Bindet die existierende server.yml ein.
     ports:
-      - 8124:80
+      - 8125:80
     command: serve
 
 volumes:
