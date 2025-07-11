@@ -4,6 +4,8 @@ services:
   paste:
     image: danielszabo99/microbin
     restart: always
+    env_file:
+      - .env
     ports:
       - "8065:8080"
     volumes:
