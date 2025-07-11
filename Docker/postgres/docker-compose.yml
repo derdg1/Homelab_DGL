@@ -14,18 +14,12 @@ services:
     ports:
       - "5432:5432"
 
-  pgadmin:
-    image: elestio/pgadmin:latest
-    container_name: pgadmin
+  adminer:
+    image: adminer:latest
+    container_name: adminer
     restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
-      - "8081:80"
-    volumes:
-      - pgadmin_data:/var/lib/pgadmin
+      - "8081:8080"
 
 volumes:
   postgres_data:
-  pgadmin_data:
