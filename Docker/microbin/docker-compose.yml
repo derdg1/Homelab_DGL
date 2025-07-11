@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  paste:
+    image: danielszabo99/microbin
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "8065:8080"
+    volumes:
+      - /docker/microbin:/my/microbin
+      - /docker/microbin/data:/app/pasta_data
