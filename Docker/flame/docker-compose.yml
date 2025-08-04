@@ -9,13 +9,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 5005:5005
-    secrets:
-      - password
     environment:
       - PASSWORD=${FLAME_PASSWORD}
-      - PASSWORD_FILE=/run/secrets/password
     restart: unless-stopped
-
-secrets:
-  password:
-    file: ${FLAME_SECRET_PATH}
