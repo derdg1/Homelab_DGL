@@ -1,0 +1,21 @@
+version: '3.6'
+
+services:
+  flame:
+    image: pawelmalak/flame
+    container_name: flame
+    volumes:
+      - ${FLAME_DATA_PATH}:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:5005
+    secrets:
+      - password
+    environment:
+      - PASSWORD=${FLAME_PASSWORD}
+      - PASSWORD_FILE=/run/secrets/password
+    restart: unless-stopped
+
+secrets:
+  password:
+    file: ${FLAME_SECRET_PATH}
